@@ -1,0 +1,11 @@
+C:\Users\Palko\RiderProjects\PlayGround\PlayGround\bin\Debug\PlayGround.exe
+C:\Users\Palko\RiderProjects\PlayGround\PlayGround\bin\Debug\PlayGround.pdb
+C:\Users\Palko\RiderProjects\PlayGround\PlayGround\bin\Debug\mscorlib.dll
+C:\Users\Palko\RiderProjects\PlayGround\PlayGround\bin\Debug\normidna.nlp
+C:\Users\Palko\RiderProjects\PlayGround\PlayGround\bin\Debug\normnfc.nlp
+C:\Users\Palko\RiderProjects\PlayGround\PlayGround\bin\Debug\normnfd.nlp
+C:\Users\Palko\RiderProjects\PlayGround\PlayGround\bin\Debug\normnfkc.nlp
+C:\Users\Palko\RiderProjects\PlayGround\PlayGround\bin\Debug\normnfkd.nlp
+C:\Users\Palko\RiderProjects\PlayGround\PlayGround\obj\Debug\PlayGround.csprojResolveAssemblyReference.cache
+C:\Users\Palko\RiderProjects\PlayGround\PlayGround\obj\Debug\PlayGround.exe
+C:\Users\Palko\RiderProjects\PlayGround\PlayGround\obj\Debug\PlayGround.pdb
