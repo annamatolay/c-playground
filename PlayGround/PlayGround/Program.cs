@@ -2,39 +2,78 @@
 
 namespace PlayGround
 {
-    public class Stack
+    public class Logger
+    {
+        public static void Log(string msg)
+        {
+            Console.WriteLine(">>> StackMsg: " + msg + " <<<");
+        }
+    }
+
+    public class MyStack<T>
     {
         private int _topIndex;
         private readonly int _stackLimit;
-        private readonly int[] _stack;
+        private  T[] _stack;
 
-        public Stack(int num)
+        public MyStack(int limit)
         {
-            if (num <= 0)
+            if (limit <= 0)
                 throw new ArgumentOutOfRangeException();
             _topIndex = 0;
-            _stackLimit = num;
-            _stack = new int[_stackLimit];
+            _stackLimit = limit;
+            _stack = new T[_stackLimit];
         }
 
-        public void Push(int num)
+        // return type because of liquid code
+        public MyStack<T> Push(T item)
         {
             if (_topIndex >= _stackLimit)
             {
                 throw new Exception("StackOverFlow!");
             }
-            _stack[_topIndex] = num;
+            _stack[_topIndex] = item;
             ++_topIndex;
-            Console.WriteLine(">>>StackMsg: Succesfully pushed: "+num+"!");
+            Logger.Log("Succesfully pushed: "+item+"!");
+            return this;
         }
 
-        public int Pop()
+        public T Pop()
+        {
+            CheckEmpty();
+            --_topIndex;
+            var item = _stack[_topIndex];
+            Logger.Log("Succesfully popped: "+item+"!");
+            return item;
+        }
+
+        public MyStack<T> Peek()
+        {
+            string item;
+            try
+            {
+                CheckEmpty();
+                item = _stack[_topIndex - 1].ToString();
+            }
+            catch (Exception e)
+            {
+                item = "not exist";
+            }
+            Logger.Log("Top item: "+item+"!");
+            return this;
+        }
+
+        public MyStack<T> Clear()
+        {
+            _stack = new T[_stackLimit];
+            _topIndex = 0;
+            return this;
+        }
+
+        private void CheckEmpty()
         {
             if (_topIndex == 0)
                 throw new Exception("StackIsEmpty!");
-            --_topIndex;
-            Console.WriteLine(">>>StackMsg: Succesfully popped!");
-            return _stack[_topIndex];
         }
     }
 
@@ -42,36 +81,39 @@ namespace PlayGround
     {
         public static void Main(string[] args)
         {
-            Stack stack;
+            // Examples
+            MyStack<int> myStack;
             try
             {
-                stack = new Stack(0);
+                myStack = new MyStack<int>(0);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-            stack = new Stack(2);
-            stack.Push(10);
-            stack.Push(20);
+            myStack = new MyStack<int>(2);
+            myStack.Push(10)
+                .Push(20)
+                .Peek();
             try
             {
-                stack.Push(30);
+                myStack.Push(30);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-            Console.WriteLine(stack.Pop());
-            Console.WriteLine(stack.Pop());
+            myStack.Clear();
             try
             {
-                Console.WriteLine(stack.Pop());
+                myStack.Peek()
+                    .Pop();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
+
         }
     }
 }
